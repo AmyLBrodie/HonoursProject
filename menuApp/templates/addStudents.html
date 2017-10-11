@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--<script src='vue.js'></script>-->
+    <!--<link rel="stylesheet" href="vuemenu.css"/>-->
+    <link rel="stylesheet" href="{% static 'css/addStudents.css' %}"/>
+    <script src="{% static 'js/vue.js' %}"></script>
+</head>
+<form id="addStudent">
+    <div class="adds">
+        <a class="home-icon"></a>
+        <h4>Add Student</h4>
+    </div>
+
+    <div class=uploadImage>
+        <div>
+            <img id=userImage src="{% static 'placeholder-user.png' %}"></img>
+        </div>
+        <div class=fileupload>
+            <h3>Upload an Image</h3>
+            <input type="file" id="myFile" size="50" accept="image/*" onchange="loadFile()">
+        </div>
+    </div>
+
+    <div class=studentInfo>
+        <h4>Name: </h4>
+        <input v-model="message" name="name">
+        <br></br>
+        <h4>Contact Details: </h4>
+        <input v-model="message" name="contactdetails">
+        <br></br>
+        <h4>ID Number: </h4>
+        <input v-model="message" name="idnumber">
+        <br></br>
+        <h4>Class Number: </h4>
+        <input v-model.number="classnumber" type="number">
+        <br></br>
+        <br></br>
+        <input type="button" Value="Save">
+        <input type="button" Value="Cancel">
+        <input type="reset">
+
+    </div>
+
+</form>
+
+<script>
+    var menu = new Vue({
+        el: '#addStudent',
+        delimiters: ['[[', ']]'],
+    });
+
+    function loadFile() {
+        var x = document.getElementById("myFile");
+        var output = document.getElementById("userImage");
+        output.src = URL.createObjectURL(x.files[0]);
+  };
+</script>
+
+</html>

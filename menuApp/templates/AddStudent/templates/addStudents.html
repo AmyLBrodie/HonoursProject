@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--<script src='vue.js'></script>-->
+    <!--<link rel="stylesheet" href="vuemenu.css"/>-->
+    <link rel="stylesheet" href="{% static 'css/addStudents.css' %}"/>
+    <script src="{% static 'js/vue.js' %}"></script>
+</head>
+<form id="addStudent">
+    <div class="adds">
+        <a class="home-icon"></a>
+        <h4>Add Student</h4>
+    </div>
+
+    <div class=uploadImage>
+        <div>
+            <img id=userImage src="{% static 'placeholder-user.png' %}"></img>
+        </div>
+        <div class=fileupload>
+            <h3>Upload an Image</h3>
+            <input type="file" id="myFile" size="50" accept="image/*" onchange="addImage()">
+        </div>
+    </div>
+
+    <div class=studentInfo>
+        <h4>Name: </h4>
+        <input v-model="message" name="name">
+        <br></br>
+        <h4>Contact Details: </h4>
+        <input v-model="message" name="contactdetails">
+        <br></br>
+        <h4>ID Number: </h4>
+        <input v-model="message" name="idnumber">
+        <br></br>
+        <h4>Class Number: </h4>
+        <input v-model.number="classnumber" type="number">
+        <br></br>
+        <br></br>
+        <input type="button" Value="Save">
+        <input type="button" Value="Cancel">
+        <input type="reset">
+
+    </div>
+    <!--<div class="filter">
+        <table>
+            <tr>
+                <td><h5>Name: </h5></td>
+                <td><input v-model="message" name="name"></td>
+                <td><h5>Current Employment: </h5> </td>
+                <td><input v-model="message" name="currentEmp"> </td>
+                <td><h5>Class: </h5> </td>
+                <td><input v-model="message" name="class"> </td>
+                <td><h5>Year: </h5> </td>
+                <td><select v-model="selected">
+                      <option v-for="option in options" v-bind:value="option.value">
+                        [[ option.text ]]
+                      </option>
+                    </select> </td>
+                <td><input type="button" Value="Filter"> </td>
+                <td><input type="reset"> </td>
+            </tr>
+        </table>
+    </div>-->
+
+
+</form>
+
+<script>
+    var menu = new Vue({
+        el: '#addStudent',
+        delimiters: ['[[', ']]'],
+    });
+
+    function addImage(){
+        var x = document.getElementById("myFile");
+        var txt = "";
+        if ('files' in x) {
+            if (x.files.length == 0) {
+                txt = "<p>Select one or more files.</p>";
+            } else {
+                for (var i = 0; i < x.files.length; i++) {
+                    var file = x.files[i];
+                    if ('name' in file) {
+                        txt += "<img src='" + file.fileName + "'></img><br>";
+                    }
+                }
+            }
+        }
+        else {
+            if (x.value == "") {
+                txt += "Select one or more files.";
+            } else {
+                txt += "The files property is not supported by your browser!";
+                txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead.
+            }
+        }
+        document.getElementById("image").innerHTML = txt;
+    }
+</script>
+
+</html>
