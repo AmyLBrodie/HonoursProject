@@ -1,3 +1,6 @@
+This is my part in the honours project I worked on in 2017. I created a view for student details on a web app using django, python, html, javascript and css. A framework for editable tables to display data was used from https://www.ag-grid.com/
+All of the methods I worked on are listed below. 
+
 views.py:
 	
 	handle_uploaded_file(file,filename): Takes in file and name of the file, then loops through chunks of the file to write it onto the server.
