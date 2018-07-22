@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ICT_Admin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ict_studentdb',
+        'NAME': 'db',
         'USER': 'root',
         
     }
